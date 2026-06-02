@@ -1,6 +1,29 @@
 # Arc House Content List
 
-> Tổng hợp toàn bộ content trên [community.arc.io](https://community.arc.io/home/content)
+> Tổng hợp toàn bộ content trên [community.arc.io](https://community.arc.io/home/content) — Video, Blog, Resource, External Content
+
+---
+
+## 📋 Cào lịch sử cá nhân của bạn
+
+Muốn biết bạn đã xem/đọc gì, bỏ lỡ gì? Làm theo 4 bước:
+
+**Bước 1** — Đăng nhập vào [community.arc.io](https://community.arc.io) → vào trang **My Contributions**
+
+**Bước 2** — Scroll xuống hết trang (để load toàn bộ lịch sử)
+
+**Bước 3** — Nhấn `F12` → chọn tab **Console** → copy toàn bộ script bên dưới → paste vào Console → nhấn Enter
+
+<details>
+<summary>📌 Click để xem script (copy toàn bộ)</summary>
+
+```javascript
+(function(){const results=[];const dateRe=/(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d+(?:st|nd|rd|th)?,?\s*\d{4}/i;const typeKw=['Watch a Video','Read Content','Daily Active'];const typeEls=Array.from(document.querySelectorAll('*')).filter(el=>{const t=(el.textContent||'').trim();return typeKw.includes(t)&&el.childElementCount===0});if(typeEls.length===0){alert('Khong tim duoc! Hay dam bao dang o trang My Contributions va da scroll xuong het');return}const seen=new Set();typeEls.forEach(typeEl=>{const type=(typeEl.textContent||'').trim();let row=typeEl.parentElement;for(let i=0;i<10;i++){if(!row)break;if(dateRe.test(row.innerText||''))break;row=row.parentElement}if(!row||seen.has(row))return;seen.add(row);const text=(row.innerText||'').trim();const lines=text.split('\n').map(l=>l.trim()).filter(Boolean);const dateMatch=text.match(dateRe);const date=dateMatch?dateMatch[0]:'';let title='';const dotMatch=text.match(/[·•]\s*(.{10,})/);if(dotMatch)title=dotMatch[1].split('\n')[0].trim();else{const candidates=lines.filter(l=>l.length>15&&!dateRe.test(l)&&!typeKw.some(k=>l.includes(k))&&!/^[\+x\d]/.test(l));title=candidates[0]||''}if(date||title)results.push([type,date,title])});if(!results.length){alert('Khong parse duoc.');return}const tsv=['Loai\tNgay\tTieu de',...results.map(r=>r.join('\t'))].join('\n');const ov=document.createElement('div');ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:999999;display:flex;align-items:center;justify-content:center';const bx=document.createElement('div');bx.style.cssText='background:#fff;border-radius:12px;padding:28px;width:75%;max-width:750px;font-family:Arial';const h=document.createElement('div');h.innerHTML='<b style="font-size:16px">Tim duoc '+results.length+' hoat dong</b><br><small style="color:#666">Nhan Copy roi Paste vao Excel</small>';h.style.marginBottom='14px';const ta=document.createElement('textarea');ta.value=tsv;ta.style.cssText='width:100%;height:220px;font:12px monospace;border:1px solid #ddd;border-radius:6px;padding:8px;box-sizing:border-box';ta.readOnly=true;const row2=document.createElement('div');row2.style.cssText='display:flex;gap:10px;margin-top:14px';const copyBtn=document.createElement('button');copyBtn.textContent='Copy tat ca';copyBtn.style.cssText='flex:1;padding:12px;background:#1E3A5F;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;font-weight:bold';copyBtn.onclick=()=>{ta.select();document.execCommand('copy');copyBtn.textContent='Da copy! Mo Excel dan Ctrl+V';copyBtn.style.background='#22c55e';setTimeout(()=>ov.remove(),2500)};const closeBtn=document.createElement('button');closeBtn.textContent='Dong';closeBtn.style.cssText='padding:12px 20px;background:#6b7280;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer';closeBtn.onclick=()=>ov.remove();row2.append(copyBtn,closeBtn);bx.append(h,ta,row2);ov.appendChild(bx);document.body.appendChild(ov);ta.select()})();
+```
+
+</details>
+
+**Bước 4** — Popup hiện ra → nhấn **"Copy tất cả"** → mở Excel → **Ctrl+V**
 
 ---
 
@@ -8,7 +31,7 @@
 
 | # | Ngày | Tiêu đề | Link |
 |---|------|---------|------|
-| 1 | Jun 1, 2026 | Building Bermuda's Onchain Economy | The Government of Bermuda | [🔗](https://community.arc.io/home/videos/building-bermudas-onchain-economy-or-the-government-of-bermuda-david-burt-circle-heath-tarbert-kash-razzaghi-2026-06-01) |
+| 1 | Jun 1, 2026 | Building Bermuda's Onchain Economy \| The Government of Bermuda | [🔗](https://community.arc.io/home/videos/building-bermudas-onchain-economy-or-the-government-of-bermuda-david-burt-circle-heath-tarbert-kash-razzaghi-2026-06-01) |
 | 2 | May 28, 2026 | Agentic Demo Day: AI Projects Built on Arc | [🔗](https://community.arc.io/home/videos/agentic-demo-day-ai-projects-built-on-arc-2026-05-28) |
 | 3 | May 28, 2026 | Replay: Arc Builder Spotlight: TLAY - Machine-to-Machine Nanopayments on Arc | [🔗](https://community.arc.io/home/videos/replay-arc-builder-spotlight-tlay-machine-to-machine-nanopayments-on-arc-2026-05-28) |
 | 4 | May 20, 2026 | Replay: Arc Enterprise & DeFi Hackathon Spotlight: Chariot | [🔗](https://community.arc.io/home/videos/replay-arc-enterprise-and-defi-hackathon-spotlight-chariot-crosschain-collateral-lending-protocol-on-arc-2026-05-20) |
@@ -58,9 +81,9 @@
 | 48 | Dec 8, 2025 | Arc Day One Spotlight: Fast and Predictable Onchain Agentic Commerce with Crossmint | [🔗](https://community.arc.io/home/videos/arc-day-one-spotlight-fast-and-predictable-onchain-agentic-commerce-with-crossmint-2025-12-08) |
 | 49 | Dec 6, 2025 | Roundtable: Arc's Core Design Features | [🔗](https://community.arc.io/home/videos/roundtable-arcs-core-design-features-2025-12-06) |
 | 50 | Dec 6, 2025 | Roundtable: The Arc Experience | [🔗](https://community.arc.io/home/videos/roundtable-the-arc-experience-2025-12-06) |
-| 51 | Dec 6, 2025 | Roundtable: Arc the Economic OS w/Jeremy Allaire and Nikhil Chandhok Pt. 3 | [🔗](https://community.arc.io/home/videos/roundtable-arc-the-economic-os-wjeremy-allaire-and-nikhil-chandhok-pt-3-2025-12-06) |
-| 52 | Dec 6, 2025 | Roundtable: Arc the Economic OS w/Jeremy Allaire and Nikhil Chandhok Pt. 2 | [🔗](https://community.arc.io/home/videos/roundtable-arc-the-economic-os-wjeremy-allaire-and-nikhil-chandhok-pt-2-2025-12-06) |
-| 53 | Dec 6, 2025 | Roundtable: Arc the Economic OS w/Jeremy Allaire and Nikhil Chandhok Pt. 1 | [🔗](https://community.arc.io/home/videos/roundtable-arc-the-economic-os-part-1-2025-12-06) |
+| 51 | Dec 6, 2025 | Roundtable: Arc the Economic OS w/Jeremy Allaire Pt. 3 | [🔗](https://community.arc.io/home/videos/roundtable-arc-the-economic-os-wjeremy-allaire-and-nikhil-chandhok-pt-3-2025-12-06) |
+| 52 | Dec 6, 2025 | Roundtable: Arc the Economic OS w/Jeremy Allaire Pt. 2 | [🔗](https://community.arc.io/home/videos/roundtable-arc-the-economic-os-wjeremy-allaire-and-nikhil-chandhok-pt-2-2025-12-06) |
+| 53 | Dec 6, 2025 | Roundtable: Arc the Economic OS w/Jeremy Allaire Pt. 1 | [🔗](https://community.arc.io/home/videos/roundtable-arc-the-economic-os-part-1-2025-12-06) |
 | 54 | Dec 6, 2025 | Event Replay: Welcome to Arc | [🔗](https://community.arc.io/home/videos/event-replay-welcome-to-arc) |
 | 55 | Dec 6, 2025 | Event Replay: Day One Architect: Crossmint | [🔗](https://community.arc.io/home/videos/event-replay-day-one-architect-crossmint) |
 | 56 | Nov 13, 2025 | Event Replay: Day One Architect Highlight: Blockradar | [🔗](https://community.arc.io/home/videos/event-replay-day-one-architect-highlight-blockradar-2025-11-13) |
