@@ -1,6 +1,7 @@
 # Arc House Content List
 
 > Tổng hợp toàn bộ content trên [community.arc.io](https://community.arc.io/home/content) — Video, Blog, Resource, External Content
+> Google sheet https://docs.google.com/spreadsheets/d/1F8KZftsDUpDCOI0GA0vkGXo_44Sm8lWLOGi4lTCGoX4/edit?gid=0#gid=0
 
 ---
 
